@@ -10,7 +10,6 @@ const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.omuii.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
@@ -98,13 +97,6 @@ async function run() {
       const result = await orderCollection.deleteOne(query);
       res.json(result);
     });
-
-    // app.get("/services/:serviceId", async (req, res) => {
-    //   const id = req.params.serviceId;
-    //   const query = { _id: ObjectId(id) };
-    //   const service = await serviceCollection.findOne(query);
-    //   res.json(service);
-    // });
   } finally {
     // await client.close()
   }
